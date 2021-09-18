@@ -39,7 +39,7 @@ radial-gradient(at 80% 100%, rgb(149, 204, 37) 0, transparent 50%);">
   <div class="header">
     <img
       src="https://kds4fq7uiwxv4nhsaxxl2jtpcayws3kdfj3zaq75qmpp2xnqmr6q.arweave.net/UOXCw_RFr1408gXuvSZvEDFpbUMqd5BD_YMe_V2wZH0"
-      alt="PriceArt">
+      alt="PriceArt" onclick="window.location.reload()">
   </div>
 
 
@@ -47,7 +47,7 @@ radial-gradient(at 80% 100%, rgb(149, 204, 37) 0, transparent 50%);">
   <div id="sketch" class="sketch">
     <div class="content">
 
-      <script src="scripts/setup.js"></script>
+      <script src="scripts/explorersetup.js"></script>
       <script src="scripts/lines.js"></script>
       <script src="scripts/draw.js"></script>
 
@@ -93,11 +93,6 @@ radial-gradient(at 80% 100%, rgb(149, 204, 37) 0, transparent 50%);">
 
 
   <script>
-    var capturer = new CCapture({
-      format: 'png',
-      framerate: 10,
-      verbose: true,
-    });
     var WEBMCapturer = new CCapture({
       format: 'gif',
       framerate: 60,

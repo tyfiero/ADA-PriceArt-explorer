@@ -127,8 +127,8 @@ function loadMetaData(metaData) {
         } else {
             var text = val[1];
             var p = document.createElement('p');
-            p.innerHTML = `<span class="meta-data-key">${metaDataNames[i]}:</span>;
-            <span class="meta-data-value">${text}</span>`;
+            p.innerHTML = `<span class="meta-data-key">${metaDataNames[i]}:</span>
+            <span class="meta-data-value">${text}</span>`
             metaDataDiv.appendChild(p);
         }
         i++;
@@ -152,7 +152,8 @@ function setup() {
     cnv.parent(document.querySelector('#canvas-and-metadata'));
     colorMode(HSB, 359, 100, 100, 1);
     textFont(myFont);
-
+//pauses sketch if runs for more than 5 minutes.
+setTimeout(timeOutPause, 300000);
     const months = {
         '01': 'January',
         '02': 'February',
@@ -444,6 +445,11 @@ function setup() {
     buttonRefresh.style("font-size", "15px");
     buttonRefresh.style("background-color", 100);
     buttonRefresh.parent(parentElement)
+
+    function timeOutPause(){
+        paused = true;    
+        document.querySelector('.button-pause').innerHTML = '<span class="material-icons">play_arrow</span>';
+        }
 };
 
 function saveImage() {
