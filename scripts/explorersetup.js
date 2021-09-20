@@ -1,8 +1,3 @@
-//PriceArt, generative art on Cardano! 
-//Built by Ty Fiero, inspiration from Daniel Shiffman and Colorful Coding
-
-
-
 var pair = "ADA/USD";
 //color variables
 var colorAttribute;
@@ -447,9 +442,11 @@ setTimeout(timeOutPause, 300000);
     buttonRefresh.parent(parentElement)
 
     function timeOutPause(){
+        if (!isRecording){
         paused = true;    
         document.querySelector('.button-pause').innerHTML = '<span class="material-icons">play_arrow</span>';
         }
+    }
 };
 
 function saveImage() {

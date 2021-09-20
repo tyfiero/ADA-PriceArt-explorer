@@ -1,5 +1,3 @@
-//inspired by Adam Ferris, original:https://github.com/aferriss/p5jsShaderExamples
-
 precision mediump float;
 varying vec3 vNormal;
 varying vec3 vEye;

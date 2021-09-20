@@ -644,9 +644,9 @@ function draw() {
         specularMaterial(220, 100, 70);
         shininess(100);
         //logoZoom
-        if (mouseIsPressed) {
-            if (mouseButton === CENTER) {
-                translate(332 + (mouseX / 10), 285 + (mouseY / 10), 100);
+        if (mouseIsPressed && !bigLogo) {
+            if (mouseButton === CENTER || bigLogo) {
+                translate(330 + (mouseX / 10), 276 + (mouseY / 10), 100);
                 scale(4);
                 var spinMap = map(mouseX, 0, 1000, -0.2, 0.2);
                 var spinMapY = map(mouseY, 0, 1000, -0.2, 0.2);
@@ -655,16 +655,16 @@ function draw() {
                 logoLocale = 0;
             }
         } else if (bigLogo) {
-            translate(382 , 325, 100);
+            translate(382, 325, 100);
             scale(4);
-            if (mouseX<1400 && mouseX > -50 && mouseY <1100 && mouseY > -200){
-             spinMap = map(mouseX, 0, 1000, -0.2, 0.2);
-             spinMapY = map(mouseY, 0, 1000, -0.2, 0.2);
-            rotateY(spinMap);
-            rotateX(-spinMapY);
+            if (mouseY < 1100 && mouseY > -100) {
+                spinMap = map(mouseX, 0, 1000, -0.2, 0.2);
+                spinMapY = map(mouseY, 0, 1000, -0.2, 0.2);
+                rotateY(spinMap);
+                rotateX(-spinMapY);
             }
             logoLocale = 0;
-        } else {}
+        }
         fill(220, 100, 70);
         model(logo3D);
         pop();

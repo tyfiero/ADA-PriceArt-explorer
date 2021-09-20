@@ -1,5 +1,3 @@
-//inspired by Adam Ferris, original content:https://github.com/aferriss/p5jsShaderExamples
-
 attribute vec3 aPosition;
 attribute vec2 aTexCoord;
 attribute vec3 aNormal;
