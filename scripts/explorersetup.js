@@ -82,24 +82,24 @@ function preload() {
         "4hour": loadJSON("data/4hour.json"),
     };
     //font
-    myFont = loadFont("https://arweave.net/-hnQ1l6qi8W82XdVBX0-cWatpQcLbN5TZ6-MRKHilRc");
+    myFont = loadFont("assets/Cano.ttf");
     // //images
-    moon = loadImage("https://oksfendlaida6jopynz3kone4hlgazcx4r3xav2spoa5o7f2dzla.arweave.net/cqRSNGsCBg8lz8NztTmk4dZgZFfkd3BXUnuB13y6HlY");
-    venus = loadImage("https://si6obhn6jipv2pw3dijxpv5nhp6fdfaar6i4nkrr3tkjefunqjdq.arweave.net/kjzgnb5KH10-2xoTd9etO_xRlACPkcaqMdzUkhaNgkc");
-    neptune = loadImage("https://sdbfddngouflnoaw3ulcbllatfpzzwby36cydxswpz7l6gih43ga.arweave.net/kMJRjaZ1Cra4Ft0WIK1gmV-c2DjfhYHeVn5-vxkH5sw");
-    jupiter = loadImage("https://jyrfnwtiw3eaki7enu2lljtkigpnixty5ycsqrj7cvpj4isqp66q.arweave.net/TiJW2mi2yAUj5G00taZqQZ7UXnjuBShFPxVeniJQf70");
-    planetary = loadImage("https://pqbynmdg4vtrqnj4vnxytbvkf6hxavqvjyagwkygztovbfmrowla.arweave.net/fAOGsGblZxg1PKtviYaqL49wVhVOAGsrBszdUJWRdZY");
+    moon = loadImage("assets/moon.png");
+    venus = loadImage("assets/venus.png");
+    neptune = loadImage("assets/neptune.png");
+    jupiter = loadImage("assets/jupiter.png");
+    planetary = loadImage("assets/planetary.png");
     //3d logo
     logo3D = loadModel("assets/ada3d.obj", true);
-    logoTrademark = loadImage("https://5yzjyswno5npllnoa4xmgb4xl3zzrfaaci6wrqxkkuhspplr52pa.arweave.net/7jKcSs13WvWtrgcuwweXXvOYlAASPWjC6lUPJ71x7p4");
+    logoTrademark = loadImage("assets/trademark.png");
     //shader preload
     myShader = loadShader("assets/percentshader.vert", "assets/percentshader.frag");
-    up1 = loadImage("https://fowyqquowcpmynfhs4uhk45w35rurtnnvhushnwj327tc3rfkqma.arweave.net/K62IQo6wnsw0p5codXO232NIza2p6SO2yd6_MW4lVBg");
-    up2 = loadImage("https://axzp6e4deb4qnbygd5cwpo6qgab7nxlbbs7vz4zdm2rxa2o2qhia.arweave.net/BfL_E4MgeQaHBh9FZ7vQMAP23WEMv1zzI2ajcGnagdA");
-    up3 = loadImage("https://gtiafqa4c6bwq5xr6bnfaxjslp4rltm2evztua64pzkriorjazma.arweave.net/NNACwBwXg2h28fBaUF0yW_kVzZolczoD3H5VFDopBlg");
-    down1 = loadImage("https://qgqbkujck7ljk5wcdshbrwrn5ddtc5mdjdn2aptqkaerwaxkxw2a.arweave.net/gaAVUSJX1pV2whyOGNot6McxdYNI26A-cFAJGwLqvbQ");
-    down2 = loadImage("https://a27fi4qrhpuhz4lonzado4ytrhndcwpdwf5iizzueltnwq7ramma.arweave.net/Br5UchE76Hzxbm5AN3MTidoxWeOxeoRnNCLm20PxAxg");
-    down3 = loadImage("https://lu3jhlxx4wnjknjoywjxgowwearnkgkk7h5lzxrl25jknijdjrxa.arweave.net/XTaTrvflmpU1LsWTczrWICLVGUr5-rzeK9dSpqEjTG4");
+    up1 = loadImage("assets/up1.png");
+    up2 = loadImage("assets/up2.jpeg");
+    up3 = loadImage("assets/up3.png");
+    down1 = loadImage("assets/down1.png");
+    down2 = loadImage("assets/down2.jpeg");
+    down3 = loadImage("assets/down3.png");
 }
 // Load meta-data into div
 var metaDataNames = ['NFT #', 'Type', 'Date', '% Rank', 'Color', 'Loop Mod', 'Shape Mod'];
