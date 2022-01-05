@@ -6,15 +6,14 @@ function draw() {
     // Set default for input
     if (frameCount === 1) {
         var dateSelector = document.querySelector('#date-selector');
-        dateSelector.value = 'Year';
+        dateSelector.value = 'Day';
         var e = new Event('input', {
-            value: 'Year'
+            value: 'Day'
         });
         dateSelector.dispatchEvent(e);
         var childSelector = document.querySelector('#dynamic-selectors').firstChild;
-        childSelector.value = '2019';
+        childSelector.value = '2017-10-01';
         childSelector.dispatchEvent(e);
-
     }
 
     if (isRecording && frameNum === 1) {
@@ -79,9 +78,10 @@ function draw() {
         push();
         if (!rKey) {
             push();
+            shader(myShader);
+            myShader.setUniform("uPercentTexture", neptune);
             translate(0, 0, -200);
             scale(1.4);
-            texture(neptune);
             plane(width, height);
             pop();
         }
@@ -121,9 +121,10 @@ function draw() {
     } else if (timeType === "Day") {
         if (!rKey) {
             push();
+            shader(myShader);
+            myShader.setUniform("uPercentTexture", venus);
             translate(0, 0, -100);
-            scale(1.15);
-            texture(venus);
+            scale(1.20);
             plane(width, height);
             pop();
         }
@@ -178,8 +179,9 @@ function draw() {
         if (!rKey) {
             push();
             translate(0, 0, -100);
-            scale(1.15);
-            texture(planetary);
+            scale(1.18);
+            shader(myShader);
+            myShader.setUniform("uPercentTexture", planetary);
             plane(width, height);
             pop();
         }
@@ -207,10 +209,12 @@ function draw() {
     } else if (timeType === "Month") {
         if (!rKey) {
             push();
+            shader(myShader);
+            myShader.setUniform("uPercentTexture", jupiter);
             translate(0, 0, -200);
-            scale(1.3);
-            texture(jupiter);
+            scale(1.32);
             plane(width, height);
+            pop();
         }
         pop();
         push();
@@ -220,76 +224,14 @@ function draw() {
     } else {
         if (!rKey) {
             push();
+            shader(myShader);
+            myShader.setUniform("uPercentTexture", moon);
             translate(0, 0, -1400);
             scale(3.15);
-            texture(moon);
             plane(width, height);
             pop();
         }
-        push();
-        noiseDetail(1);
-        if (mod1 === "A") {
-            translate(0, 950, -660);
-            rotateX(60);
-            rotateY(49.8);
-            scale(1.01, 1.3);
-        } else if (mod1 === "B") {
-            translate(-400, 400, -660);
-            rotateX(500.1);
-            rotateY(10.1);
-        } else if (mod1 === "C") {
-            translate(0, 920, -1060);
-            rotateX(500.04);
-            rotateY(50);
-            scale(1.01, 1.5);
-        } else {
-            scale(0.8);
-            translate(0, 950, -1060);
-            rotateX(500.1);
-            rotateY(50);
-        }
-        stroke(0);
-        strokeWeight(0.01);
-        directionalLight([255], createVector(0, 0, -1));
-        directionalLight([255], createVector(0, 110, -1));
-        scale(2.1);
-        var w = 21;
-        var start = frameCount / 60;
-        var xoffCube = 0;
-        for (var x = -350; x <= width / 2; x += w) {
-            var yoffCube = 0;
-            for (var y = -50; y <= 500; y += (w)) {
-                if (mod1 === "A") {
-                    rotateZ(0.1);
-                    rotateY(0.0009);
-                } else if (mod1 === "B") {
-                    rotateY(0.0031);
-                } else if (mod1 === "C") {
-                    rotateY(0.079);
-                } else {
-                    rotateY(1);
-                }
-                var h = map(noise(xoffCube + start, yoffCube + start), 0, 1, -100, 130);
-                colorAttribute = map(x, -width / 2, width / 2, startColor, endColor);
-                var s = map(y, -height / 2, height / 2, 500, 0);
-                var b = map(h, -100, 100, 0, 500);
-                push();
-                fill(colorAttribute, s, b, 0.8);
-                translate(x, y, -h / 2);
-                if (mod2 === 1) {
-                    box(w, h, h);
-                } else if (mod2 === 2) {
-                    cylinder(h, w, 5, 5);
-
-                } else {
-                    sphere(h, 6, 6);
-                }
-                pop();
-                yoffCube += 0.2;
-            }
-            xoffCube += 0.008;
-        }
-        pop();
+        yearBG.yearBGDisplay();
     }
 
     //logo rotation 
@@ -372,7 +314,7 @@ function draw() {
     pop();
     pop();
     //UP 3D candle draw
-    if (direction > 0 && ratioPercent > 0.01) {
+    if (direction > 0) {
         push();
         textSize(25);
         fill(100, 0, 100);
@@ -466,7 +408,7 @@ function draw() {
     }
 
     //DOWN 3D candle draw
-    if (direction < 0 && ratioPercent > 0.01) {
+    if (direction < 0) {
         push();
         textSize(25);
         if (ratioPercent < 0.059 && timeType !== 'Year') {
@@ -554,7 +496,7 @@ function draw() {
         pop();
     }
     //DOJI 3D candle draw
-    if (direction === 0 || ratioPercent <= 0.01) {
+    if (direction === 0) {
         push();
         strokeWeight(3);
         textSize(25);
@@ -698,4 +640,5 @@ function draw() {
             message = false;
         }
     }
+
 }

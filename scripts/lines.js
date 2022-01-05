@@ -269,3 +269,71 @@ var monthBG = {
         }
     }
 };
+var yearBG = {
+    yearBGDisplay: function yearBGeffects() {
+        push();
+        noiseDetail(1);
+        if (mod1 === "A") {
+            translate(0, 950, -660);
+            rotateX(60);
+            rotateY(49.8);
+            scale(1.01, 1.3);
+        } else if (mod1 === "B") {
+            translate(-400, 400, -660);
+            rotateX(500.1);
+            rotateY(10.1);
+        } else if (mod1 === "C") {
+            translate(0, 920, -1060);
+            rotateX(500.04);
+            rotateY(50);
+            scale(1.01, 1.5);
+        } else {
+            scale(0.8);
+            translate(0, 950, -1060);
+            rotateX(500.1);
+            rotateY(50);
+        }
+        stroke(0);
+        strokeWeight(0.01);
+        directionalLight([255], createVector(0, 0, -1));
+        directionalLight([255], createVector(0, 110, -1));
+        scale(2.1);
+        var w = 21;
+        var start = frameCount / 60;
+        var xoffCube = 0;
+        for (var x = -350; x <= width / 2; x += w) {
+            var yoffCube = 0;
+            for (var y = -50; y <= 500; y += (w)) {
+                if (mod1 === "A") {
+                    rotateZ(0.1);
+                    rotateY(0.0009);
+                } else if (mod1 === "B") {
+                    rotateY(0.0031);
+                } else if (mod1 === "C") {
+                    rotateY(0.079);
+                } else {
+                    rotateY(1);
+                }
+                var h = map(noise(xoffCube + start, yoffCube + start), 0, 1, -100, 130);
+                colorAttribute = map(x, -width / 2, width / 2, startColor, endColor);
+                var s = map(y, -height / 2, height / 2, 500, 0);
+                var b = map(h, -100, 100, 0, 500);
+                push();
+                fill(colorAttribute, s, b, 0.8);
+                translate(x, y, -h / 2);
+                if (mod2 === 1) {
+                    box(w, h, h);
+                } else if (mod2 === 2) {
+                    cylinder(h, w, 5, 5);
+
+                } else {
+                    sphere(h, 6, 6);
+                }
+                pop();
+                yoffCube += 0.2;
+            }
+            xoffCube += 0.008;
+        }
+        pop();
+}
+};
